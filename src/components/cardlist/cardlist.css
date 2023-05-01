@@ -1,0 +1,21 @@
+.cards {
+    width: 62rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    position: relative;
+    left: calc(50% - 31rem);
+    flex: 1 0 auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+@media (max-width: 580px) {
+    .cards {
+        width: 24rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        left: calc(50% - 12rem);
+    }
+}
