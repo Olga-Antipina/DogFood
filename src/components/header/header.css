@@ -5,9 +5,17 @@ header {
     right: 0;
     top: 0;
     padding: 12px 0;
-    width: 100%;
+    width: 100vw;
     background: #FFE44D;
     flex: 1 0 auto;
+}
+
+.header__message {
+    font-style: normal;
+    font-weight: 900;
+    font-size: 28px;
+    line-height: 32px;
+    color: #1A1A1A;
 }
 
 .header__wrapper {
@@ -21,7 +29,6 @@ header {
 .header_icons {
     display: flex;
     flex-direction: row;
-    /* justify-content: flex-end; */
     align-items: center;
     padding: 0px;
     gap: 34px;

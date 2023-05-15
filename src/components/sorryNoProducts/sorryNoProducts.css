@@ -1,0 +1,59 @@
+.sorryNoProducts {
+    width: 62rem;
+    position: relative;
+    left: calc(50% - 31rem);
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.sorryNoProducts__search {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 32px;
+    font-size: 32px;
+    position: relative;
+    
+}
+
+.sorryNoProducts__search__value {
+    font-weight: 800;
+}
+
+.sorryNoProducts__message {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    left: calc(50% - 31rem);
+    margin-top: 2rem;
+    margin-bottom: 2rem;    
+}
+
+.sorryNoProducts__img {
+    margin-top: 5rem;
+}
+
+.sorryNoProducts__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sorryNoProducts__button a {
+    font-style: normal;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    color: #1A1A1A;
+    border: 1px solid #CFD8DC;
+    border-radius: 87px;
+    padding: 9px 16px;    
+}
+
+.sorryNoProducts__button {
+    margin-bottom: 5rem;
+}

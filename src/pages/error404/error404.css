@@ -1,0 +1,38 @@
+.error404__message {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
+    left: calc(50% - 31rem);
+    margin-top: 2rem;
+    margin-bottom: 2rem;    
+}
+
+.error404__img {
+    margin-top: 5rem;
+}
+
+.error404__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 20rem);
+}
+
+.error404__button a {
+    font-style: normal;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 14px;
+    color: #1A1A1A;
+    border: 1px solid #CFD8DC;
+    border-radius: 87px;
+    padding: 9px 16px;    
+}
+
+.error404__button {
+    margin-bottom: 5rem;
+}

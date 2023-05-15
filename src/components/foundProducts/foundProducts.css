@@ -1,0 +1,20 @@
+.foundProducts {
+    width: 62rem;
+    position: relative;
+    left: calc(50% - 31rem);
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.foundProducts__search {
+    font-style: normal;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 32px;
+    font-size: 32px;
+    position: relative;
+}
+
+.foundProducts__search__value {
+    font-weight: 800;
+}

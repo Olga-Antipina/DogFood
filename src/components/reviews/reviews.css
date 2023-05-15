@@ -1,0 +1,38 @@
+.reviews__firstInfo {
+    margin: 1rem 0;
+}
+
+.reviews__name {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 24px;
+    color: #1A1A1A;
+    margin-right: 1rem;
+}
+
+.reviews__date {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7B8E98;
+}
+
+/* .reviews__rating {} */
+
+.reviews__text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1A1A;
+    margin: 1rem 0;
+}
+
+.reviews__line {
+    border: none;
+    background: #ECEFF1;
+    color: #ECEFF1;
+    height: 1px;
+}
