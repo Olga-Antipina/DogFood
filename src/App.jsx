@@ -11,6 +11,7 @@ import { Favorites } from './pages/favorites/favorites';
 import { Cart } from './pages/cart/cart';
 import { Profile } from './pages/profile/profile';
 import { Error404 } from './pages/error404/error404';
+import { UserContext } from './context/userContext';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   const [cards, setCards] = useState([]);
   const [search, setSearch] = useState(undefined);
   const [user, setUser] = useState({});
+  const [favoritesProducts, setFavoritesProducts] = useState([]);
 
 
   const filteredCards = (cards) => {
@@ -32,6 +34,9 @@ function App() {
     if (foundIndexOfElem !== -1) {
       setCards(state => [...state.slice(0, foundIndexOfElem), updatedCard, ...state.slice(foundIndexOfElem + 1)]);
     }
+    isLiked
+      ? setFavoritesProducts(state => state.filter(fav => fav._id !== updatedCard._id)) //удалили продукт из списка избранного
+      : setFavoritesProducts(state => [updatedCard, ...state]); //добавили продукт в избранное
   }
 
   const sortCards = (event) => {
@@ -47,22 +52,16 @@ function App() {
     } else if (event.target.textContent === 'Новинки') {
       const newCards = cards.sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at));
       setCards([...newCards]);
-      // ПЕРВОНАЧАЛЬНЫЙ КОД ДЛЯ ПРИМЕРА (позже будет удалён)
-      // const newCards = cards;
-      // for (let i of newCards) {
-      //   if (!!i.tags.includes("new")) {
-      //     let index = newCards.indexOf(i);
-      //     newCards.splice(index, 1);
-      //     newCards.splice(0, 0, i);
-      //   }
-      // }
     } else if (event.target.textContent === 'По рейтингу') {
-      // Код для отображения рейтинга не работает, не могу понять, почему (не рассчитывает рейтинг - среднее арифметическое всех оценок)
-      const averageValue = (arr) => arr.reduce((previousValue, currentValue) => {
-        previousValue += currentValue.rating;
-        return previousValue/(arr.length);
-      }, 0);
-      const newCards = cards.sort((a, b) => averageValue(b.reviews)-averageValue(a.reviews));
+      // Код для отображения рейтинга корректно не работает, не могу понять, почему (не рассчитывает рейтинг - среднее арифметическое всех оценок)
+      const averageValue = (arr) => {
+        if (!arr || !arr.length) {
+          return 0;
+        }
+        const middleRating = arr.reduce((previousValue, currentValue) => previousValue += currentValue.rating, 0);
+        return middleRating / arr.length;        
+      }      
+      const newCards = cards.sort((a, b) => averageValue(b.reviews) - averageValue(a.reviews));
       setCards([...newCards]);
     } else if (event.target.textContent === 'Популярные') {
       const newCards = cards.sort((a, b) => b.likes.length - a.likes.length);
@@ -79,25 +78,27 @@ function App() {
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getProductList()]).then(([userData, productData]) => {
       setUser(userData);
-      setCards(filteredCards(productData.products));
+      const filteredProducts = filteredCards(productData.products);
+      setCards(filteredProducts);
+      const favoritesFiltered = filteredProducts.filter(item => item.likes.includes(userData._id));
+      setFavoritesProducts(favoritesFiltered);
     });
   }, []);
 
-
   return (
     <div className="app">
-      <Header setSearch={setSearch}/>
-      
-      <Routes>
-        <Route path='/' element={<Catalog cards={cards} user={user} operationFavorite={operationFavoriteProduct} debounceValueInApp={debounceValueInApp} sortCards={sortCards}/>} />
-        <Route path='/opencard/:id' element={<OpenCard user={user}/>} />
-        <Route path='/favorites' element={<Favorites />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='*' element={<Error404 />} />
-      </Routes>
-
-      <Footer />
+      <UserContext.Provider value={user}>
+        <Header setSearch={setSearch} favoritesProducts={favoritesProducts} />
+        <Routes>
+          <Route path='/' element={<Catalog cards={cards} operationFavorite={operationFavoriteProduct} debounceValueInApp={debounceValueInApp} sortCards={sortCards} />} />
+          <Route path='/opencard/:id' element={<OpenCard />} />
+          <Route path='/favorites' element={<Favorites favoritesProducts={favoritesProducts} operationFavorite={operationFavoriteProduct} />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='*' element={<Error404 />} />
+        </Routes>
+        <Footer />
+      </UserContext.Provider>
     </div>
   );
 }

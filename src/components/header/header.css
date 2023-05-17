@@ -34,6 +34,28 @@ header {
     gap: 34px;
     width: 140px;
     height: 24px;
+    position: relative;
+}
+
+.header__likes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 19px;
+    height: 14px;
+    left: 8px;
+    top: -8px;
+    background: #01A54E;
+    border: 2px solid #FFE44D;
+    border-radius: 20px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 9px;
+    line-height: 12px;
+    text-align: center;
+    color: #FFFFFF;
 }
 
 .header__logo {

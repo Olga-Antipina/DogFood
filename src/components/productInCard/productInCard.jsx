@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import './productInCard.css'
 import { ReactComponent as Arrow } from './img/arrow.svg'
@@ -7,9 +7,12 @@ import { ReactComponent as Like } from './img/like.svg'
 import { ReactComponent as Truck } from './img/truck.svg'
 import { ReactComponent as Ribbon } from './img/ribbon.svg'
 import { Reviews } from "../reviews/reviews";
+import { UserContext } from "../../context/userContext";
 
 
-export const ProductInCard = ({ product, user, isItInFavorite }) => {
+export const ProductInCard = ({ product, isItInFavorite }) => {
+
+    const user = useContext(UserContext);
 
     const quantityReviewsEnding = () => {
         if (!!product.reviews) {

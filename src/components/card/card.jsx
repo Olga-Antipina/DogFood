@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./card.css"
 import { ReactComponent as Like } from "./img/like.svg"
 import { Link } from "react-router-dom";
+import { UserContext } from "../../context/userContext";
 
-export const Card = ({product, user, operationFavorite}) => {
+export const Card = ({product, operationFavorite}) => {
+
+    const user = useContext(UserContext);
 
     const isLiked = product.likes.includes(user._id);
 

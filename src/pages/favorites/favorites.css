@@ -1,3 +1,29 @@
 .favorites {
-    height: calc(100vh - 15rem);
+    width: 62rem;
+    position: relative;
+    left: calc(50% - 31rem);
+    flex: 1 0 auto;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.favorites__goHome {
+    color: #7B8E98;
+	display: flex;
+	align-items: center;
+}
+
+.favorites__title {
+	font-style: normal;
+	font-weight: 800;
+	font-size: 28px;
+	line-height: 32px;
+	color: #1A1A1A;
+	margin-top: 6px;
+}
+
+.favorites__zero {
+    height: calc(100vh - 25rem);
 }
