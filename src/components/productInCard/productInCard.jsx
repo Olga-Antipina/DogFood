@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import './productInCard.css'
 import { ReactComponent as Arrow } from './img/arrow.svg'
@@ -13,6 +13,19 @@ import { UserContext } from "../../context/userContext";
 export const ProductInCard = ({ product, isItInFavorite }) => {
 
     const user = useContext(UserContext);
+    const [isLikedProduct, setIsProductLike] = useState(false);
+
+    const handleClick = () => {
+        if (product.likes !== undefined) {
+            isItInFavorite(product, isLikedProduct);
+        }
+    }
+    useEffect(() => {
+        if (product.likes !== undefined) {
+            const isLiked = product.likes.includes(user._id);
+            setIsProductLike(isLiked)
+        }
+    }, [product.likes, user]);
 
     const quantityReviewsEnding = () => {
         if (!!product.reviews) {
@@ -68,9 +81,9 @@ export const ProductInCard = ({ product, isItInFavorite }) => {
                     <button className="productInCard__buttons__inCart">В корзину</button>
                 </div>
                 <div className="productInCard__card__sticky__like">
-                    <button onClick={isItInFavorite} className="productInCard__card__favorite">
-                        <Like className={`${product.likes !== undefined && product.likes.includes(user._id) ? 'productInCard__card__liked' : 'productInCard__card__disliked'}`} />
-                        <span className="productInCard__inFavorites">&nbsp;&nbsp;{product.likes !== undefined && product.likes.includes(user._id) ? 'В избранном' : 'В избранное'}</span>
+                    <button onClick={handleClick} className="productInCard__card__favorite">
+                        <Like className={`${product.likes !== undefined && isLikedProduct ? 'productInCard__card__liked' : 'productInCard__card__disliked'}`} />
+                        <span className="productInCard__inFavorites">&nbsp;&nbsp;{product.likes !== undefined && isLikedProduct ? 'В избранном' : 'В избранное'}</span>
                     </button>
                 </div>
                 <div>

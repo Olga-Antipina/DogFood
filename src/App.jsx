@@ -37,6 +37,7 @@ function App() {
     isLiked
       ? setFavoritesProducts(state => state.filter(fav => fav._id !== updatedCard._id)) //удалили продукт из списка избранного
       : setFavoritesProducts(state => [updatedCard, ...state]); //добавили продукт в избранное
+    return isLiked;
   }
 
   const sortCards = (event) => {
@@ -59,8 +60,8 @@ function App() {
           return 0;
         }
         const middleRating = arr.reduce((previousValue, currentValue) => previousValue += currentValue.rating, 0);
-        return middleRating / arr.length;        
-      }      
+        return middleRating / arr.length;
+      }
       const newCards = cards.sort((a, b) => averageValue(b.reviews) - averageValue(a.reviews));
       setCards([...newCards]);
     } else if (event.target.textContent === 'Популярные') {
@@ -72,17 +73,21 @@ function App() {
 
   useEffect(() => {
     if (debounceValueInApp === undefined) return;
-    api.searchProducts(debounceValueInApp).then((data) => setCards(filteredCards(data)));
+    api.searchProducts(debounceValueInApp)
+    .then((data) => setCards(filteredCards(data)))
+    .catch((error)=>console.log('ОШИБКА', error));
   }, [debounceValueInApp]);
 
   useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getProductList()]).then(([userData, productData]) => {
+    Promise.all([api.getUserInfo(), api.getProductList()])
+    .then(([userData, productData]) => {
       setUser(userData);
       const filteredProducts = filteredCards(productData.products);
       setCards(filteredProducts);
       const favoritesFiltered = filteredProducts.filter(item => item.likes.includes(userData._id));
       setFavoritesProducts(favoritesFiltered);
-    });
+    })
+    .catch((error)=>console.log('ОШИБКА', error));
   }, []);
 
   return (
@@ -91,7 +96,7 @@ function App() {
         <Header setSearch={setSearch} favoritesProducts={favoritesProducts} />
         <Routes>
           <Route path='/' element={<Catalog cards={cards} operationFavorite={operationFavoriteProduct} debounceValueInApp={debounceValueInApp} sortCards={sortCards} />} />
-          <Route path='/opencard/:id' element={<OpenCard />} />
+          <Route path='/opencard/:id' element={<OpenCard operationFavorite={operationFavoriteProduct} />} />
           <Route path='/favorites' element={<Favorites favoritesProducts={favoritesProducts} operationFavorite={operationFavoriteProduct} />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/profile' element={<Profile />} />

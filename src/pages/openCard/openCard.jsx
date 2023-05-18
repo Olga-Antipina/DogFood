@@ -1,40 +1,43 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { api } from "../../utils/api";
 import { useParams } from "react-router";
 import { ProductInCard } from "../../components/productInCard/productInCard";
 import { UserContext } from "../../context/userContext";
 
-export const OpenCard = () => {
+export const OpenCard = ({ operationFavorite }) => {
 
     const user = useContext(UserContext);
-    console.log(user);
 
     const [product, setProduct] = useState({});
-    const {id} = useParams();
+    const { id } = useParams();
 
-    // Статус лайка в каталоге не актуализируется, если вернуться в каталог без загрузки страницы каталога. Не могу понять, почему, уже сетила в App, ставила флаг, отслеживала карточки тоже, прокидывала пропсы, ничего не помогает
-    const operationFavoriteInCard = async (product, isLiked) => {
-        const updatedCard = await api.likeOrDislike(product._id, isLiked);
-        setProduct(updatedCard);
-    }
-    const isItInFavorite = () => {
+    const isItInFavorite = useCallback(async (product, isLiked) => {
         if (product.likes !== undefined) {
-            operationFavoriteInCard(product, product.likes.includes(user._id));
+            const wasLiked = await operationFavorite(product, isLiked);
+            if (wasLiked) {
+                const filteredLikes = product.likes.filter(e => e !== user?._id);
+                setProduct((s) => ({ ...s, likes: filteredLikes }))
+            } else {
+                const addLikes = [...product.likes, user?._id];
+                setProduct((s) => ({ ...s, likes: addLikes }))
+            }
         }
-    };
+    }, [operationFavorite, user?._id]);
 
     
-    useEffect (() => {
+    useEffect(() => {
         if (id) {
-            api.getProductId(id).then((data) => {
+            api.getProductId(id)
+            .then((data) => {
                 setProduct(data);
-            });
-        }        
+            })
+            .catch((error)=>console.log('ОШИБКА', error));
+        }
     }, [id]);
 
     return (
         <div className="openCard">
-            <ProductInCard product={product} isItInFavorite={isItInFavorite}/>
+            <ProductInCard product={product} isItInFavorite={isItInFavorite} />
         </div>
     );
 };

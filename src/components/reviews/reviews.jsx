@@ -3,7 +3,7 @@ import './reviews.css'
 
 export const Reviews = ({ product }) => {
     if (!!product.reviews) {
-        // product.reviews.map(item => console.log(item.author.name));
+
         return (product.reviews.map((item) => <div key={item._id}>
             <div className="reviews__firstInfo">
                 <span className="reviews__name">{item.author.name}</span>
