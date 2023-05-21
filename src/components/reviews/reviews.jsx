@@ -1,9 +1,9 @@
 import React from "react";
 import './reviews.css'
+import { ReactComponent as Star } from '../productInCard/img/star.svg'
 
 export const Reviews = ({ product }) => {
     if (!!product.reviews) {
-
         return (product.reviews.map((item) => <div key={item._id}>
             <div className="reviews__firstInfo">
                 <span className="reviews__name">{item.author.name}</span>

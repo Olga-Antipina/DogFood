@@ -25,7 +25,7 @@ export const ProductInCard = ({ product, isItInFavorite }) => {
             const isLiked = product.likes.includes(user._id);
             setIsProductLike(isLiked)
         }
-    }, [product.likes, user]);
+    }, [product.likes, user._id]);
 
     const quantityReviewsEnding = () => {
         if (!!product.reviews) {
@@ -57,7 +57,9 @@ export const ProductInCard = ({ product, isItInFavorite }) => {
                 <div className="productInCard__rating">
                     <div>Артикул:</div>&nbsp;
                     <div className="productInCard__article__value">0000000</div>&nbsp;&nbsp;
-                    <div className="productInCard__stars"><Star /><Star /><Star /><Star /><Star /></div>&nbsp;&nbsp;
+                    <div className="productInCard__stars">
+                        <Star /><Star /><Star /><Star /><Star />
+                    </div>&nbsp;&nbsp;
                     <div className="productInCard__reviews"><a href="#reviews" onClick={handleScrollClick}>{!!product.reviews && product.reviews.length}&nbsp;отзыв{quantityReviewsEnding()}</a></div>
                 </div>
                 <div className="productInCard__img">
@@ -121,7 +123,9 @@ export const ProductInCard = ({ product, isItInFavorite }) => {
                     <div className="productInCard__reviews__title">Отзывы</div>
                     <span className="productInCard__button__review">Написать отзыв</span>
                     <hr className="productInCard__line"></hr>
-                    {product.reviews !== undefined && !!product.reviews.length ? <Reviews product={product} /> : <div className="productInCard__reviews__zero">Отзывы на данный товар отсутствуют</div>}
+                    {product.reviews !== undefined && !!product.reviews.length
+                        ? <Reviews product={product} />
+                        : <div className="productInCard__reviews__zero">Отзывы на данный товар отсутствуют</div>}
                 </div>
             </div>
         </div>

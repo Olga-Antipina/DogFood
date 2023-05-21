@@ -1,4 +1,4 @@
-import React from "react"
+import React, { memo } from "react"
 import './footer.css'
 import { ReactComponent as Logo } from './img/logo.svg'
 import { ReactComponent as ExtremismIcon } from './img/extremism_icon.svg'
@@ -7,7 +7,7 @@ import { ReactComponent as ViberIcon } from './img/viber_icon.svg'
 import { ReactComponent as VKIcon } from './img/vk_icon.svg'
 import { ReactComponent as WhatsappIcon } from './img/whatsapp_icon.svg'
 
-export const Footer = (props) => {
+export const Footer = memo(() => {
     return <footer>
         <div className="container">
             <div className="footer__wrapper">
@@ -41,4 +41,6 @@ export const Footer = (props) => {
             </div>
         </div>
     </footer>
-}
+})
+
+

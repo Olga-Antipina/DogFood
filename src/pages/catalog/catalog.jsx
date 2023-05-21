@@ -30,7 +30,7 @@ export const Catalog = ({ cards, operationFavorite, debounceValueInApp, sortCard
                     <span className="cards__sort__elem" onClick={sortCards}>По скидке</span>
                 </div>}
                 <Cardlist cards={cards} operationFavorite={operationFavorite} debounceValueInApp={debounceValueInApp} sortCards={sortCards} />
-            </div>
+            </div>            
         </div>
     )
 }
