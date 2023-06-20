@@ -7,7 +7,7 @@ export const Error404 = () => {
         <div className="error404__container">
             <div className="error404__img"><SadFase /></div>
             <div className="error404__message">Что-то пошло не так... ERROR 404</div>
-            <div className="error404__button"><a href="/">В каталог</a></div>
+            <div className="error404__button"><a href="/">На главную</a></div>
         </div>
     )
 }

@@ -1,0 +1,89 @@
+.rating-area {
+    margin-left: 12px;
+}
+
+
+.form-radio-hidden {
+    height: 28px;
+    position: relative;
+}
+
+.form-radio-hidden input {
+    position: absolute;
+    opacity: 0;
+    display: block;
+    height: 0;
+    width: 0;
+}
+
+.form-radio-hidden input:checked+.review__stars {
+    cursor: default;
+    stroke: #FFAA0D;
+    fill: #FFAA0D;
+}
+
+.review__stars {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    stroke: none;
+    fill: #CFD8DC;
+}
+
+.review__stars:hover {
+    stroke: #FFAA0D;
+    fill: #FFAA0D;
+}
+
+.button__review {
+    border: 1px solid #FFE44D;
+    border-radius: 87px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 174px;
+    height: 40px;
+    margin: 12px 0 28px 0;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #1A1A1A;
+    cursor: pointer;
+    font-family: 'Nunito';
+    background: #FFE44D;
+    cursor: pointer;
+}
+
+.text__review {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1A1A;
+    margin: 0 0 1rem 0;
+    width: 100%;
+    height: 100px;
+    border-radius: 20px;
+    resize: none;
+    padding: 20px;
+}
+
+.text__review::-webkit-scrollbar {
+    width: 0;
+}
+
+.errors__review {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #1A1A1A;
+    margin: 0 0 20px 6px;
+}

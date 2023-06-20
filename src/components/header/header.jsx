@@ -4,6 +4,7 @@ import { ReactComponent as Logo } from './img/logo.svg'
 import { ReactComponent as FavoritesIcon } from './img/favorites_icon.svg'
 import { ReactComponent as CartIcon } from './img/cart_icon.svg'
 import { ReactComponent as ProfileIcon } from './img/profile_icon.svg'
+import { ReactComponent as ExitIcon } from './img/exit.svg'
 import { Search } from "../search/search"
 import { Link, useLocation } from "react-router-dom"
 
@@ -14,6 +15,7 @@ export const Header = (props) => {
     }
     const location = useLocation();    
 
+    
     return <header>
         <div className="container">
             <div className="header__wrapper">
@@ -23,6 +25,7 @@ export const Header = (props) => {
                     <Link to="/favorites"><FavoritesIcon /></Link>{!!props.favoritesProducts.length && <span className="header__likes">{props.favoritesProducts.length}</span>}
                     <Link to="/cart"><CartIcon /></Link>
                     <Link to="/profile"><ProfileIcon /></Link>
+                    <ExitIcon onClick={props.exit}/>
                 </div>
             </div>
         </div>

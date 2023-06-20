@@ -164,18 +164,18 @@
 	color: #000000;
 }
 
-table {
+.productInCard__table {
 	margin-top: 1rem;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 20px;
+	display: grid;
+	grid-template-columns: repeat(2, 300px);
+	grid-template-rows: repeat(3);
 }
 
-tr,
-td {
-	padding: 0;
-	margin: 0;
+.productInCard__tr, .productInCard__td {
 	height: 3rem;
 	width: 14rem;
 }
@@ -219,7 +219,6 @@ td {
 	border-radius: 55px;
 	border: 1px solid #FFE44D;
 	padding: 0;
-	border: none;
 	font-family: 'Nunito';
 	font-style: normal;
 	font-weight: 700;
@@ -315,4 +314,14 @@ td {
 	color: #7B8E98;
 	display: flex;
 	align-items: center;
+}
+
+.productInCard__stars__grey {
+	stroke: none;
+    fill: #CFD8DC;
+}
+
+.productInCard__stars__fill {
+	stroke: #FFAA0D;
+    fill: #FFAA0D;
 }
