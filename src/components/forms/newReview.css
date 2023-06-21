@@ -2,7 +2,6 @@
     margin-left: 12px;
 }
 
-
 .form-radio-hidden {
     height: 28px;
     position: relative;
@@ -16,7 +15,7 @@
     width: 0;
 }
 
-.form-radio-hidden input:checked+.review__stars {
+.form-radio-hidden input:checked + .review__stars {
     cursor: default;
     stroke: #FFAA0D;
     fill: #FFAA0D;

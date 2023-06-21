@@ -5,7 +5,7 @@ import { api } from "../../utils/api";
 import { useParams } from "react-router";
 import './newReview.css'
 
-export const NewReview = ({ product, reviews, setReviews }) => {
+export const NewReview = ({ setReviews }) => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { id } = useParams();

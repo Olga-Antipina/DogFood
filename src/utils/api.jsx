@@ -31,14 +31,14 @@ class Api {
         }).then(onRes).catch((error) => console.log('ОШИБКА', error));
     }
 
-    likeThisProduct(productId) {
+    likeThisProduct(productId) { // не понадобилось
         return fetch(`${this.baseUrl}/products/likes/${productId}`, {
             method: 'PUT',
             ...this.newHeadersConfig()
         }).then(onRes).catch((error) => console.log('ОШИБКА', error));
     }
 
-    dislikeThisProduct(productId) {
+    dislikeThisProduct(productId) { // не понадобилось
         return fetch(`${this.baseUrl}/products/likes/${productId}`, {
             method: 'DELETE',
             ...this.newHeadersConfig()
@@ -59,7 +59,7 @@ class Api {
         }).then(onRes).catch((error) => console.log('ОШИБКА', error));
     }
 
-    createNewProduct(product) {
+    createNewProduct(product) { // не понадобилось
         return fetch(`${this.baseUrl}/products`, {
             method: 'POST',
             ...this.newHeadersConfig(),
@@ -67,7 +67,7 @@ class Api {
         }).then(onRes).catch((error) => console.log('ОШИБКА', error));
     }
 
-    updateProduct(productId) {
+    updateProduct(productId) { // не понадобилось
         return fetch(`${this.baseUrl}/products/${productId}`, {
             method: 'PATCH',
             ...this.newHeadersConfig()
@@ -75,7 +75,7 @@ class Api {
         }).then(onRes).catch((error) => console.log('ОШИБКА', error));
     }
 
-    deleteProduct(productId) {
+    deleteProduct(productId) { // не понадобилось
         return fetch(`${this.baseUrl}/products/${productId}`, {
             method: 'DELETE',
             ...this.newHeadersConfig()
@@ -97,7 +97,7 @@ class Api {
         }).then(onRes).catch((error) => console.log('ОШИБКА', error));
     }
 
-    getAllProductReviews() {
+    getAllProductReviews() { // не понадобилось
         return fetch(`${this.baseUrl}/products/review`, {
             method: 'GET',
             ...this.newHeadersConfig()
@@ -143,12 +143,29 @@ class Api {
         }).then(onRes).catch((error) => console.log('ОШИБКА', error));
     }
 
-    isValidToken() {
+    isValidToken() { // не понадобилось
         return fetch(`${this.baseUrl}/v2/group-12/users/me`, {
             method: 'GET',
             ...this.newHeadersConfig()
         }).then(onRes).catch((error) => console.log('ОШИБКА', error));
     }
+
+    editUserInfo(data) {
+        return fetch(`${this.baseUrl}/users/me`, {
+            method: 'PATCH',
+            ...this.newHeadersConfig(),
+            body: JSON.stringify(data)
+        }).then(onRes).catch((error) => console.log('ОШИБКА', error));
+    }
+
+    editUserAvatar(link) {
+        return fetch(`${this.baseUrl}/users/me/avatar`, {
+            method: 'PATCH',
+            ...this.newHeadersConfig(),
+            body: JSON.stringify(link)
+        }).then(onRes).catch((error) => console.log('ОШИБКА', error));
+    }
+
 }
 
 
@@ -164,7 +181,7 @@ const newHeadersConfig = () => {
 const config = {
     baseUrl: "https://api.react-learning.ru",
     headers: {
-        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ3YjIwYThmYmM0NzNmYTg5ZDRiOTYiLCJncm91cCI6Imdyb3VwLTEyIiwiaWF0IjoxNjgyNDI4NzA1LCJleHAiOjE3MTM5NjQ3MDV9.6o0ezfHUP2u8gbrShDsjjoBANKkjIB_iOQA1Kv4AaBw",
+        // "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ3YjIwYThmYmM0NzNmYTg5ZDRiOTYiLCJncm91cCI6Imdyb3VwLTEyIiwiaWF0IjoxNjgyNDI4NzA1LCJleHAiOjE3MTM5NjQ3MDV9.6o0ezfHUP2u8gbrShDsjjoBANKkjIB_iOQA1Kv4AaBw",
         "Content-Type": "application/json",
     },
 }

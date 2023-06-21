@@ -42,8 +42,8 @@ function App() {
       setCards(state => [...state.slice(0, foundIndexOfElem), updatedCard, ...state.slice(foundIndexOfElem + 1)]);
     }
     isLiked
-      ? setFavoritesProducts(state => state.filter(fav => fav._id !== updatedCard._id)) //удалили продукт из списка избранного
-      : setFavoritesProducts(state => [updatedCard, ...state]); //добавили продукт в избранное
+      ? setFavoritesProducts(state => state.filter(fav => fav._id !== updatedCard._id))
+      : setFavoritesProducts(state => [updatedCard, ...state]);
     return isLiked;
   }
 
@@ -104,13 +104,13 @@ function App() {
       setAuthorization(true);
     }
   }, []);
-  
 
   const exit = useCallback(() => {
     localStorage.removeItem('token');
     setAuthorization(!!localStorage.getItem('token'))
     navigate('/');
   }, [])
+
 
   return (
     <div className="app">
@@ -123,7 +123,7 @@ function App() {
               <Route path='/opencard/:id' element={<OpenCard operationFavorite={operationFavoriteProduct} reviews={reviews} setReviews={setReviews}/>} />
               <Route path='/favorites' element={<Favorites favoritesProducts={favoritesProducts} operationFavorite={operationFavoriteProduct} />} />
               <Route path='/cart' element={<Cart />} />
-              <Route path='/profile' element={<Profile />} />
+              <Route path='/profile' element={<Profile setUser={setUser} />} />
               <Route path='*' element={<Error404 />} />
             </Routes>
             <Footer />

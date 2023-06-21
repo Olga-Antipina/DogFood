@@ -17,7 +17,7 @@ export const FormAuthorization = ({ isRequired = true, setAuthorization }) => {
     const sendData = (data) => {
         api.authorization(data)
             .then((res) => {
-                if (res.err) {                    
+                if (res.err) {
                     alert("ОШИБКА " + res.err.statusCode + ": " + res.message);
                 } else {
                     localStorage.setItem('token', res.token);

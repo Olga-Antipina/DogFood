@@ -22,10 +22,10 @@ export const Header = (props) => {
             <a href="/"><Logo className="header__logo"/></a>
                 {location.pathname === "/" ? <Search setSearch={setSearchQuery}/> : <div className="header__message">Крафтовые лакомства для собак!</div>}
                 <div className="header_icons">
-                    <Link to="/favorites"><FavoritesIcon /></Link>{!!props.favoritesProducts.length && <span className="header__likes">{props.favoritesProducts.length}</span>}
-                    <Link to="/cart"><CartIcon /></Link>
-                    <Link to="/profile"><ProfileIcon /></Link>
-                    <ExitIcon onClick={props.exit}/>
+                    <Link to="/favorites"><FavoritesIcon title="Избранное" /></Link>{!!props.favoritesProducts.length && <span className="header__likes">{props.favoritesProducts.length}</span>}
+                    <Link to="/cart"><CartIcon title="Корзина" /></Link>
+                    <Link to="/profile"><ProfileIcon title="Профиль" /></Link>
+                    <ExitIcon title="Выход" onClick={props.exit}/>
                 </div>
             </div>
         </div>
