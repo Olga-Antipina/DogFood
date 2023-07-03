@@ -65,3 +65,7 @@ footer a {
     line-height: 12px;
     margin-top: 40px;
 }
+
+.footer__links {
+    cursor: pointer;
+}

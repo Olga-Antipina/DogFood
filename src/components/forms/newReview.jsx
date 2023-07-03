@@ -21,36 +21,49 @@ export const NewReview = ({ setReviews }) => {
             })
     }
 
+    
     return (
         <div>
             <form onSubmit={handleSubmit(sendData)}>
-                <div className="rating-area">
-                    <label htmlFor="star-1" className="form-radio-hidden">
+                <div className="rating-area" >
+                    <div className="rating-group">
+                        
+                        <input name="rating" value="0" type="radio" disabled checked />
+
+                        <label htmlFor="star-1" className="form-radio-hidden">
+                            <Star className="review__stars" />
+                        </label>
                         <input type="radio" {...register('rating', { required: "Поставьте товару оценку" })} id="star-1" value={1} />
-                        <Star className="review__stars" />
-                    </label>
-                    <label htmlFor="star-2" className="form-radio-hidden">
+
+                        <label htmlFor="star-2" className="form-radio-hidden">
+                            <Star className="review__stars" />
+                        </label>
                         <input type="radio" {...register('rating', { required: "Поставьте товару оценку" })} id="star-2" value={2} />
-                        <Star className="review__stars" />
-                    </label>
-                    <label htmlFor="star-3" className="form-radio-hidden">
+
+                        <label htmlFor="star-3" className="form-radio-hidden">
+                            <Star className="review__stars" />
+                        </label>
                         <input type="radio" {...register('rating', { required: "Поставьте товару оценку" })} id="star-3" value={3} />
-                        <Star className="review__stars" />
-                    </label>
-                    <label htmlFor="star-4" className="form-radio-hidden">
+
+                        <label htmlFor="star-4" className="form-radio-hidden">
+                            <Star className="review__stars" />
+                        </label>
                         <input type="radio" {...register('rating', { required: "Поставьте товару оценку" })} id="star-4" value={4} />
-                        <Star className="review__stars" />
-                    </label>
-                    <label htmlFor="star-5" className="form-radio-hidden">
+
+                        <label htmlFor="star-5" className="form-radio-hidden">
+                            <Star className="review__stars" />
+                        </label>
                         <input type="radio" {...register('rating', { required: "Поставьте товару оценку" })} id="star-5" value={5} />
-                        <Star className="review__stars" />
-                    </label>
-                    {errors?.rating ? <div className="errors__review">{errors?.rating.message}</div> : <div className="errors__review"></div>}
+
+                        {errors?.rating ? <div className="errors__review">{errors?.rating.message}</div> : <div className="errors__review"></div>}
+                    </div>
                 </div>
+
                 <textarea className="text__review" {...register('text', { required: "Напишите отзыв к товару" })} placeholder="Ваш отзыв..."></textarea>
                 {errors?.text ? <div className="errors__review">{errors?.text.message}</div> : <div className="errors__review"></div>}
 
                 <button type="submit" className="button__review">Отправить отзыв</button>
+
             </form>
         </div>
     )

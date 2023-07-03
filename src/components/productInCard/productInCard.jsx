@@ -34,14 +34,14 @@ export const ProductInCard = ({ product, isItInFavorite, reviews, setReviews }) 
     }, [product.likes, user._id]);
 
     const quantityReviewsEnding = () => {
-        if (!!product.reviews) {
-            if (product.reviews.length % 10 === 0) {
+        if (!!reviews) {
+            if (reviews.length % 10 === 0) {
                 return 'ов';
-            } else if (product.reviews.length > 4 && product.reviews.length < 20) {
+            } else if (reviews.length > 4 && reviews.length < 20) {
                 return 'ов';
-            } else if (product.reviews.length % 10 > 1 && product.reviews.length % 10 < 5) {
+            } else if (reviews.length % 10 > 1 && reviews.length % 10 < 5) {
                 return 'а';
-            } else if (product.reviews.length % 10 > 4 && product.reviews.length % 10 < 9) {
+            } else if (reviews.length % 10 > 4 && reviews.length % 10 < 9) {
                 return 'ов';
             }
         }
@@ -56,11 +56,11 @@ export const ProductInCard = ({ product, isItInFavorite, reviews, setReviews }) 
     const starsOfRating = () => {
         const keyOfStars = ['1', '2', '3', '4', '5'];
         const stars = keyOfStars.map((el) => {
-            if (!product.reviews || !product.reviews.length) {
+            if (!reviews || !reviews.length) {
                 return (<Star key={el} className="productInCard__stars__grey" />)
             } else {
-                const middleRating = product.reviews.reduce((previousValue, currentValue) => previousValue += currentValue.rating, 0);
-                const finishRating = Math.round(middleRating / product.reviews.length);
+                const middleRating = reviews.reduce((previousValue, currentValue) => previousValue += currentValue.rating, 0);
+                const finishRating = Math.round(middleRating / reviews.length);
                 if (el <= finishRating) {
                     return (<Star key={el} className="productInCard__stars__fill" />);
                 } else {
@@ -85,10 +85,10 @@ export const ProductInCard = ({ product, isItInFavorite, reviews, setReviews }) 
                     <div className="productInCard__stars">
                         {starsOfRating()}
                     </div>&nbsp;&nbsp;
-                    <div className="productInCard__reviews"><a href="#reviews" onClick={handleScrollClick}>{!!product.reviews && product.reviews.length}&nbsp;отзыв{quantityReviewsEnding()}</a></div>
+                    <div className="productInCard__reviews"><a href="#reviews" onClick={handleScrollClick}>{!!reviews && reviews.length}&nbsp;отзыв{quantityReviewsEnding()}</a></div>
                 </div>
                 <div className="productInCard__img">
-                    <img src={product.pictures} className="productInCard__img__picture" />
+                    <img alt="Изображение товара" src={product.pictures} className="productInCard__img__picture" />
                     <div className="productInCard__card__sticky productInCard__card__sticky_type_top-left">
                         {!!product.discount && <span className="productInCard__card__discount">-{product.discount}%</span>}
                         {product.tags !== undefined && product.tags.includes("new") && <span className="productInCard__tag productInCard__tag_type_new">New</span>}

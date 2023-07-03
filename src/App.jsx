@@ -16,6 +16,7 @@ import { FormRegister } from './components/forms/register';
 import { FormAuthorization } from './components/forms/authorization';
 import { FormNewPassword } from './components/forms/newPassword';
 import { EnterWithFormNewPassword } from './components/forms/enterWithNewPassword';
+import { FAQ } from './pages/FAQ/FAQ';
 
 
 function App() {
@@ -77,7 +78,7 @@ function App() {
     }
   }
 
-
+  
   useEffect(() => {
     if (debounceValueInApp === undefined) return;
     api.searchProducts(debounceValueInApp)
@@ -124,6 +125,7 @@ function App() {
               <Route path='/favorites' element={<Favorites favoritesProducts={favoritesProducts} operationFavorite={operationFavoriteProduct} />} />
               <Route path='/cart' element={<Cart />} />
               <Route path='/profile' element={<Profile setUser={setUser} />} />
+              <Route path='/FAQ' element={<FAQ />} />
               <Route path='*' element={<Error404 />} />
             </Routes>
             <Footer />

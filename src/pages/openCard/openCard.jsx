@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 import { ProductInCard } from "../../components/productInCard/productInCard";
 import { UserContext } from "../../context/userContext";
 
-export const OpenCard = ({ operationFavorite, reviews, setReviews }) => {
+export const OpenCard = ({ operationFavorite, reviews, setReviews, starsOfRating }) => {
 
     const user = useContext(UserContext);
 
@@ -37,7 +37,7 @@ export const OpenCard = ({ operationFavorite, reviews, setReviews }) => {
 
     return (
         <div className="openCard">
-            <ProductInCard product={product} isItInFavorite={isItInFavorite} reviews={reviews} setReviews={setReviews}/>
+            <ProductInCard starsOfRating={starsOfRating} product={product} isItInFavorite={isItInFavorite} reviews={reviews} setReviews={setReviews}/>
         </div>
     );
 };

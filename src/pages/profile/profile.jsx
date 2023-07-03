@@ -25,7 +25,7 @@ export const Profile = ({ setUser }) => {
             <div className="profile__title">Профиль</div>
             <div className="profile__user">                
                 <div className="profile__avatar__container">
-                    <img src={user.avatar} className="profile__avatar"></img>
+                    <img alt="Аватар пользователя" src={user.avatar} className="profile__avatar"></img>
                 </div>
                 <div className="profile__info">
                     <div className="profile__info__name">{user.name}</div>

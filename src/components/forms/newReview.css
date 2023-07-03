@@ -1,13 +1,11 @@
 .rating-area {
     margin-left: 12px;
-}
-
-.form-radio-hidden {
+    margin-bottom: 10px;
     height: 28px;
     position: relative;
 }
 
-.form-radio-hidden input {
+.rating-area input {
     position: absolute;
     opacity: 0;
     display: block;
@@ -15,26 +13,26 @@
     width: 0;
 }
 
-.form-radio-hidden input:checked + .review__stars {
-    cursor: default;
-    stroke: #FFAA0D;
-    fill: #FFAA0D;
+.rating-area label {
+    cursor: pointer;
 }
 
-.review__stars {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    position: relative;
-    cursor: pointer;
-    outline: none;
+.rating-area label .review__stars {
+    stroke: #FFAA0D;
+    fill: #FFAA0D;
+    transition: fill 0.3s;
+}
+.rating-area input:checked ~ label .review__stars {
     stroke: none;
     fill: #CFD8DC;
 }
-
-.review__stars:hover {
+.rating-area .rating-group:hover label .review__stars {
     stroke: #FFAA0D;
     fill: #FFAA0D;
+}
+.rating-area .rating-group input:hover ~ label .review__stars {
+    stroke: none;
+    fill: #CFD8DC;
 }
 
 .button__review {
