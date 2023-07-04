@@ -62,7 +62,6 @@ function App() {
       const newCards = cards.sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at));
       setCards([...newCards]);
     } else if (event.target.textContent === 'По рейтингу') {
-      // Код для отображения рейтинга корректно не работает, не могу понять, почему (не рассчитывает рейтинг - среднее арифметическое всех оценок)
       const averageValue = (arr) => {
         if (!arr || !arr.length) {
           return 0;

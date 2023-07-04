@@ -25,7 +25,6 @@ export const Catalog = ({ cards, operationFavorite, debounceValueInApp, sortCard
                     <span className="cards__sort__elem" onClick={sortCards}>Новинки</span>
                     <span className="cards__sort__elem" onClick={sortCards}>Сначала дешёвые</span>
                     <span className="cards__sort__elem" onClick={sortCards}>Сначала дорогие</span>
-                    {/* Рейтинг пока не работает, как положено */}
                     <span className="cards__sort__elem" onClick={sortCards}>По рейтингу</span>
                     <span className="cards__sort__elem" onClick={sortCards}>По скидке</span>
                 </div>}

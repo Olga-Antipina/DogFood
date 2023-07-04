@@ -181,7 +181,6 @@ const newHeadersConfig = () => {
 const config = {
     baseUrl: "https://api.react-learning.ru",
     headers: {
-        // "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ3YjIwYThmYmM0NzNmYTg5ZDRiOTYiLCJncm91cCI6Imdyb3VwLTEyIiwiaWF0IjoxNjgyNDI4NzA1LCJleHAiOjE3MTM5NjQ3MDV9.6o0ezfHUP2u8gbrShDsjjoBANKkjIB_iOQA1Kv4AaBw",
         "Content-Type": "application/json",
     },
 }
